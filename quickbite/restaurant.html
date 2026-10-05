@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBite | Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
+    <div class="grid"></div>
+</div>
+
+<div class="cursor-glow"></div>
+
+<header class="header">
+
+    <div class="logo">
+        🍔 Quick<span style="color:#ff5a1f">Bite</span>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="restaurants.html">Restaurants</a>
+        <a href="cart.html">Cart <span id="cartCount">0</span></a>
+        <a href="orders.html">Orders</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="theme-btn" id="themeBtn">🌙</button>
+        <button class="profile-btn" onclick="showLogin()">👤</button>
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="section" style="padding-top:50px">
+
+    <a href="restaurants.html"
+       style="color:#ff8a61;text-decoration:none">
+        ← Back to Restaurants
+    </a>
+
+    <div
+        id="restaurantHero"
+        style="
+        margin-top:25px;
+        padding:45px;
+        border:1px solid var(--border);
+        border-radius:28px;
+        background:rgba(255,255,255,.05);
+        backdrop-filter:blur(15px);
+        "
+    >
+
+        <div style="font-size:80px">🍕</div>
+
+        <h1 id="restaurantName"
+            style="font-size:clamp(38px,6vw,65px);margin:15px 0">
+            Pizza Palace
+        </h1>
+
+        <p id="restaurantDescription"
+           style="color:var(--muted);line-height:1.7">
+            Italian • Pizza • Fast Food
+        </p>
+
+        <div style="margin-top:20px;color:#63e59b">
+            ★ 4.8 &nbsp; • &nbsp; 🕒 25 min &nbsp; • &nbsp; 📍 2.1 km
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="small-title">MENU</span>
+            <h2>Popular Items</h2>
+        </div>
+
+    </div>
+
+
+    <div class="restaurant-grid">
+
+        <article class="restaurant-card">
+
+            <div class="restaurant-image pizza-bg">
+                <div class="food-image">🍕</div>
+            </div>
+
+            <div class="restaurant-info">
+
+                <h3>Margherita Pizza</h3>
+
+                <p>Fresh tomato, cheese and herbs</p>
+
+                <h3 style="margin-top:12px">
+                    ₹249
+                </h3>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart('Margherita Pizza',249)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="restaurant-card">
+
+            <div class="restaurant-image burger-bg">
+                <div class="food-image">🍔</div>
+            </div>
+
+            <div class="restaurant-info">
+
+                <h3>Cheese Burger</h3>
+
+                <p>Juicy burger with melted cheese</p>
+
+                <h3 style="margin-top:12px">
+                    ₹199
+                </h3>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart('Cheese Burger',199)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="restaurant-card">
+
+            <div class="restaurant-image dessert-bg">
+                <div class="food-image">🍰</div>
+            </div>
+
+            <div class="restaurant-info">
+
+                <h3>Chocolate Cake</h3>
+
+                <p>Rich chocolate layered cake</p>
+
+                <h3 style="margin-top:12px">
+                    ₹179
+                </h3>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart('Chocolate Cake',179)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">🍔 QuickBite</div>
+
+    <p>Delicious food. Delivered with love.</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+
+const selected =
+    localStorage.getItem("selectedRestaurant");
+
+if (selected) {
+
+    document.getElementById(
+        "restaurantName"
+    ).textContent = selected;
+
+}
+
+</script>
+
+</body>
+</html>

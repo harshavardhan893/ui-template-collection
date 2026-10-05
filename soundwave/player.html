@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundWave | Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="cursor-glow"></div>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span>♫</span> SoundWave
+        </div>
+
+        <nav>
+            <a href="index.html">⌂ Home</a>
+            <a href="search.html">⌕ Search</a>
+            <a href="playlist.html">▣ Your Playlist</a>
+            <a href="player.html" class="active">▶ Player</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>YOUR MUSIC</p>
+            <button onclick="showToast('Liked Songs')">♥ Liked Songs</button>
+            <button onclick="showToast('Recently Played')">◷ Recently Played</button>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <div class="player-page">
+
+            <p class="page-subtitle">NOW PLAYING</p>
+
+            <div class="large-art">
+                ♫
+            </div>
+
+            <h2 id="largeTitle">Midnight Drive</h2>
+
+            <p id="largeArtist">Nova Lane</p>
+
+            <div class="progress-area" style="margin-top:30px;">
+
+                <span id="currentTime">0:00</span>
+
+                <div class="progress-bar">
+                    <div id="progress"></div>
+                </div>
+
+                <span>3:45</span>
+
+            </div>
+
+            <div class="big-controls">
+
+                <button onclick="previousSong()">⏮</button>
+
+                <button
+                    class="big-play"
+                    id="pagePlay"
+                    onclick="togglePlayerPage()"
+                >
+                    ▶
+                </button>
+
+                <button onclick="nextSong()">⏭</button>
+
+            </div>
+
+            <div style="margin-top:35px;">
+
+                <label>
+                    🔊 Volume
+                </label>
+
+                <input
+                    type="range"
+                    id="volume"
+                    min="0"
+                    max="100"
+                    value="70"
+                    style="width:220px; accent-color:#1ed760;"
+                >
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div class="player-bar">
+
+    <div class="now-playing">
+
+        <div class="mini-art">♫</div>
+
+        <div>
+            <strong id="currentTitle">Midnight Drive</strong>
+            <span id="currentArtist">Nova Lane</span>
+        </div>
+
+    </div>
+
+    <div class="player-controls">
+
+        <button onclick="previousSong()">⏮</button>
+
+        <button
+            class="main-play"
+            id="playButton"
+            onclick="togglePlay()"
+        >
+            ▶
+        </button>
+
+        <button onclick="nextSong()">⏭</button>
+
+    </div>
+
+    <div class="progress-area">
+
+        <span id="bottomTime">0:00</span>
+
+        <div class="progress-bar">
+            <div id="bottomProgress"></div>
+        </div>
+
+        <span>3:45</span>
+
+    </div>
+
+    <div class="volume-area">
+        <span>🔊</span>
+    </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+
+function togglePlayerPage() {
+    togglePlay();
+
+    const button = document.getElementById("pagePlay");
+
+    if (button) {
+        button.textContent = isPlaying ? "❚❚" : "▶";
+    }
+}
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

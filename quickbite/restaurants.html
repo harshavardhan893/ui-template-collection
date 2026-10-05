@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBite | Restaurants</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
+    <div class="grid"></div>
+</div>
+
+<div class="cursor-glow"></div>
+
+<header class="header">
+
+    <div class="logo">
+        <span class="logo-icon">🍔</span>
+        <span>Quick<span>Bite</span></span>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="restaurants.html" class="active">Restaurants</a>
+        <a href="cart.html">Cart <span id="cartCount">0</span></a>
+        <a href="orders.html">Orders</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="theme-btn" id="themeBtn">🌙</button>
+        <button class="profile-btn" onclick="showLogin()">👤</button>
+    </div>
+
+</header>
+
+<main>
+
+<section class="section" style="padding-top:50px">
+
+    <span class="small-title">DISCOVER</span>
+
+    <h1 style="font-size:clamp(38px,6vw,65px);margin:12px 0">
+        Explore Restaurants 🍽️
+    </h1>
+
+    <p style="color:var(--muted);max-width:650px;line-height:1.7">
+        Discover delicious food from popular restaurants near you.
+        Search, filter and add your favourite meals to your cart.
+    </p>
+
+    <div class="search-box" style="margin-top:30px">
+
+        <span class="search-icon">🔍</span>
+
+        <input
+            type="text"
+            id="restaurantSearch"
+            placeholder="Search restaurants or food..."
+        >
+
+        <button onclick="filterRestaurants()">
+            Search
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="small-title">POPULAR</span>
+            <h2>All Restaurants</h2>
+        </div>
+
+    </div>
+
+
+    <div class="restaurant-grid" id="restaurantGrid">
+
+
+        <article class="restaurant-card" data-name="pizza palace pizza italian">
+
+            <div class="restaurant-image pizza-bg">
+
+                <span class="restaurant-tag">20% OFF</span>
+
+                <button class="favorite-btn"
+                    onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                <div class="food-image">🍕</div>
+
+            </div>
+
+            <div class="restaurant-info">
+
+                <div class="restaurant-title">
+                    <h3>Pizza Palace</h3>
+                    <span class="rating">★ 4.8</span>
+                </div>
+
+                <p>Italian • Pizza • Fast Food</p>
+
+                <div class="restaurant-meta">
+                    <span>🕒 25 min</span>
+                    <span>₹₹</span>
+                    <span>📍 2.1 km</span>
+                </div>
+
+                <button class="add-btn"
+                    onclick="addToCart('Margherita Pizza',249)">
+                    + Add Pizza ₹249
+                </button>
+
+                <button class="add-btn"
+                    onclick="openRestaurant('Pizza Palace')">
+                    View Restaurant →
+                </button>
+
+            </div>
+        </article>
+
+
+        <article class="restaurant-card" data-name="burger hub burger american">
+
+            <div class="restaurant-image burger-bg">
+
+                <span class="restaurant-tag">FREE DELIVERY</span>
+
+                <button class="favorite-btn"
+                    onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                <div class="food-image">🍔</div>
+
+            </div>
+
+            <div class="restaurant-info">
+
+                <div class="restaurant-title">
+                    <h3>Burger Hub</h3>
+                    <span class="rating">★ 4.7</span>
+                </div>
+
+                <p>Burgers • American • Fast Food</p>
+
+                <div class="restaurant-meta">
+                    <span>🕒 20 min</span>
+                    <span>₹₹</span>
+                    <span>📍 1.5 km</span>
+                </div>
+
+                <button class="add-btn"
+                    onclick="addToCart('Classic Burger',199)">
+                    + Add Burger ₹199
+                </button>
+
+                <button class="add-btn"
+                    onclick="openRestaurant('Burger Hub')">
+                    View Restaurant →
+                </button>
+
+            </div>
+        </article>
+
+
+        <article class="restaurant-card" data-name="biryani house biryani indian">
+
+            <div class="restaurant-image biryani-bg">
+
+                <span class="restaurant-tag">BESTSELLER</span>
+
+                <button class="favorite-btn"
+                    onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                <div class="food-image">🍛</div>
+
+            </div>
+
+            <div class="restaurant-info">
+
+                <div class="restaurant-title">
+                    <h3>Biryani House</h3>
+                    <span class="rating">★ 4.9</span>
+                </div>
+
+                <p>Indian • Biryani • Mughlai</p>
+
+                <div class="restaurant-meta">
+                    <span>🕒 30 min</span>
+                    <span>₹₹</span>
+                    <span>📍 3.2 km</span>
+                </div>
+
+                <button class="add-btn"
+                    onclick="addToCart('Chicken Biryani',299)">
+                    + Add Biryani ₹299
+                </button>
+
+                <button class="add-btn"
+                    onclick="openRestaurant('Biryani House')">
+                    View Restaurant →
+                </button>
+
+            </div>
+        </article>
+
+
+        <article class="restaurant-card" data-name="sweet dreams cake dessert">
+
+            <div class="restaurant-image dessert-bg">
+
+                <span class="restaurant-tag">NEW</span>
+
+                <button class="favorite-btn"
+                    onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                <div class="food-image">🍰</div>
+
+            </div>
+
+            <div class="restaurant-info">
+
+                <div class="restaurant-title">
+                    <h3>Sweet Dreams</h3>
+                    <span class="rating">★ 4.6</span>
+                </div>
+
+                <p>Desserts • Cakes • Ice Cream</p>
+
+                <div class="restaurant-meta">
+                    <span>🕒 15 min</span>
+                    <span>₹</span>
+                    <span>📍 1.8 km</span>
+                </div>
+
+                <button class="add-btn"
+                    onclick="addToCart('Chocolate Cake',179)">
+                    + Add Cake ₹179
+                </button>
+
+                <button class="add-btn"
+                    onclick="openRestaurant('Sweet Dreams')">
+                    View Restaurant →
+                </button>
+
+            </div>
+        </article>
+
+
+        <article class="restaurant-card" data-name="dragon wok chinese noodles">
+
+            <div class="restaurant-image pizza-bg">
+
+                <span class="restaurant-tag">POPULAR</span>
+
+                <button class="favorite-btn"
+                    onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                <div class="food-image">🥡</div>
+
+            </div>
+
+            <div class="restaurant-info">
+
+                <div class="restaurant-title">
+                    <h3>Dragon Wok</h3>
+                    <span class="rating">★ 4.5</span>
+                </div>
+
+                <p>Chinese • Noodles • Asian</p>
+
+                <div class="restaurant-meta">
+                    <span>🕒 25 min</span>
+                    <span>₹₹</span>
+                    <span>📍 2.7 km</span>
+                </div>
+
+                <button class="add-btn"
+                    onclick="addToCart('Veg Noodles',189)">
+                    + Add Noodles ₹189
+                </button>
+
+                <button class="add-btn"
+                    onclick="openRestaurant('Dragon Wok')">
+                    View Restaurant →
+                </button>
+
+            </div>
+        </article>
+
+
+        <article class="restaurant-card" data-name="green bowl healthy salad">
+
+            <div class="restaurant-image biryani-bg">
+
+                <span class="restaurant-tag">HEALTHY</span>
+
+                <button class="favorite-btn"
+                    onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                <div class="food-image">🥗</div>
+
+            </div>
+
+            <div class="restaurant-info">
+
+                <div class="restaurant-title">
+                    <h3>Green Bowl</h3>
+                    <span class="rating">★ 4.6</span>
+                </div>
+
+                <p>Healthy • Salads • Bowls</p>
+
+                <div class="restaurant-meta">
+                    <span>🕒 18 min</span>
+                    <span>₹₹</span>
+                    <span>📍 1.2 km</span>
+                </div>
+
+                <button class="add-btn"
+                    onclick="addToCart('Healthy Bowl',219)">
+                    + Add Bowl ₹219
+                </button>
+
+                <button class="add-btn"
+                    onclick="openRestaurant('Green Bowl')">
+                    View Restaurant →
+                </button>
+
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+
+    <div class="footer-logo">🍔 QuickBite</div>
+
+    <p>Delicious food. Delivered with love.</p>
+
+    <p class="copyright">
+        © 2026 QuickBite. Original UI Template.
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+
+function filterRestaurants() {
+
+    const input =
+        document.getElementById("restaurantSearch");
+
+    const search =
+        input.value.toLowerCase().trim();
+
+    const cards =
+        document.querySelectorAll(".restaurant-card");
+
+    let found = false;
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        if (!search || name.includes(search)) {
+
+            card.style.display = "";
+
+            found = true;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    showToast(
+        found
+            ? "Restaurants updated 🔎"
+            : "No restaurant found"
+    );
+}
+
+
+function openRestaurant(name) {
+
+    localStorage.setItem(
+        "selectedRestaurant",
+        name
+    );
+
+    window.location.href =
+        "restaurant.html";
+
+}
+
+
+document
+    .getElementById("restaurantSearch")
+    .addEventListener("keydown", event => {
+
+        if (event.key === "Enter") {
+            filterRestaurants();
+        }
+
+    });
+
+</script>
+
+</body>
+</html> 

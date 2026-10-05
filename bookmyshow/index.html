@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineBook | Movie Tickets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+
+<header class="header">
+    <div class="logo">🎬 Cine<span>Book</span></div>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="bookings.html">My Bookings</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="theme-btn" onclick="toggleTheme()">☀</button>
+        <button class="login-btn" onclick="openLogin()">Login</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-small">YOUR MOVIE NIGHT STARTS HERE</p>
+
+        <h1>Movies that<br><span>move you.</span></h1>
+
+        <p class="hero-description">
+            Discover the latest movies, choose your favourite seats,
+            and book your perfect movie experience.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="movies.html" class="primary-btn">Explore Movies 🎬</a>
+            <a href="#trending" class="secondary-btn">View Trending</a>
+        </div>
+    </div>
+
+    <div class="hero-poster">
+        <div class="poster-card poster-one">
+            <div class="poster-overlay">
+                <span>NOW SHOWING</span>
+                <h2>THE<br>LAST<br>HORIZON</h2>
+                <p>★ 8.7</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="trending">
+    <div class="section-heading">
+        <div>
+            <p class="small-title">WHAT'S HOT</p>
+            <h2>Trending Movies 🔥</h2>
+        </div>
+        <a href="movies.html">View All →</a>
+    </div>
+
+    <div class="movie-grid">
+
+        <div class="movie-card tilt-card">
+            <div class="movie-poster poster-red">
+                <span class="movie-rating">★ 8.7</span>
+                <div class="poster-text">
+                    <small>ACTION</small>
+                    <h3>LAST<br>HORIZON</h3>
+                </div>
+            </div>
+            <div class="movie-info">
+                <h3>The Last Horizon</h3>
+                <p>Action • Sci-Fi • 2h 28m</p>
+                <button onclick="openMovie('The Last Horizon')">Book Tickets</button>
+            </div>
+        </div>
+
+        <div class="movie-card tilt-card">
+            <div class="movie-poster poster-blue">
+                <span class="movie-rating">★ 8.4</span>
+                <div class="poster-text">
+                    <small>SCI-FI</small>
+                    <h3>BEYOND<br>EARTH</h3>
+                </div>
+            </div>
+            <div class="movie-info">
+                <h3>Beyond Earth</h3>
+                <p>Sci-Fi • Adventure • 2h 15m</p>
+                <button onclick="openMovie('Beyond Earth')">Book Tickets</button>
+            </div>
+        </div>
+
+        <div class="movie-card tilt-card">
+            <div class="movie-poster poster-purple">
+                <span class="movie-rating">★ 9.1</span>
+                <div class="poster-text">
+                    <small>DRAMA</small>
+                    <h3>THE<br>SILENT<br>VOICE</h3>
+                </div>
+            </div>
+            <div class="movie-info">
+                <h3>The Silent Voice</h3>
+                <p>Drama • Mystery • 2h 05m</p>
+                <button onclick="openMovie('The Silent Voice')">Book Tickets</button>
+            </div>
+        </div>
+
+        <div class="movie-card tilt-card">
+            <div class="movie-poster poster-gold">
+                <span class="movie-rating">★ 8.2</span>
+                <div class="poster-text">
+                    <small>ADVENTURE</small>
+                    <h3>LOST<br>KINGDOM</h3>
+                </div>
+            </div>
+            <div class="movie-info">
+                <h3>Lost Kingdom</h3>
+                <p>Adventure • Fantasy • 2h 32m</p>
+                <button onclick="openMovie('Lost Kingdom')">Book Tickets</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="feature-section">
+    <div class="feature-box">
+        <div class="feature-icon">🎟️</div>
+        <h3>Easy Booking</h3>
+        <p>Select your movie, theatre and favourite seats in seconds.</p>
+    </div>
+
+    <div class="feature-box">
+        <div class="feature-icon">💺</div>
+        <h3>Best Seats</h3>
+        <p>Choose exactly where you want to sit before you book.</p>
+    </div>
+
+    <div class="feature-box">
+        <div class="feature-icon">⚡</div>
+        <h3>Quick Checkout</h3>
+        <p>A simple booking flow designed for a smooth experience.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="logo">🎬 Cine<span>Book</span></div>
+    <p>© 2026 CineBook. Movie booking UI template.</p>
+</footer>
+
+<div class="modal" id="loginModal">
+    <div class="modal-box">
+        <button class="close-btn" onclick="closeLogin()">×</button>
+        <h2>Welcome Back 👋</h2>
+        <p>Login to manage your movie bookings.</p>
+
+        <input type="text" id="loginName" placeholder="Your Name">
+        <input type="email" id="loginEmail" placeholder="Email Address">
+
+        <button class="primary-btn full-btn" onclick="loginUser()">Login</button>
+    </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

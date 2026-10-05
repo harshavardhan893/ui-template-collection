@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details | CineBook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+
+<header class="header">
+    <div class="logo">🎬 Cine<span>Book</span></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="movies.html" class="active">Movies</a>
+        <a href="bookings.html">My Bookings</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="theme-btn" onclick="toggleTheme()">☀</button>
+    </div>
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+        <p class="hero-small">MOVIE DETAILS</p>
+
+        <h1 id="movieTitle">The Last Horizon</h1>
+
+        <p class="hero-description">
+            Experience an unforgettable cinematic journey.
+            Choose your favourite theatre and showtime,
+            then select your seats.
+        </p>
+
+        <p style="color:var(--muted);margin-bottom:25px;">
+            ⭐ 8.7/10 &nbsp; • &nbsp; Action &nbsp; • &nbsp; Sci-Fi
+            &nbsp; • &nbsp; 2h 28m
+        </p>
+
+        <a href="seats.html" class="primary-btn" onclick="saveMovie()">
+            Choose Seats 💺
+        </a>
+
+        <a href="movies.html" class="secondary-btn" style="margin-left:10px;">
+            ← Back
+        </a>
+    </div>
+
+    <div class="hero-poster">
+        <div class="poster-card poster-red">
+            <div class="poster-overlay">
+                <span>NOW SHOWING</span>
+                <h2 id="posterTitle">LAST<br>HORIZON</h2>
+                <p>★ 8.7</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <div class="logo">🎬 Cine<span>Book</span></div>
+    <p>© 2026 CineBook</p>
+</footer>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const movie = localStorage.getItem("selectedMovie");
+
+    if (movie) {
+        document.getElementById("movieTitle").textContent = movie;
+        document.getElementById("posterTitle").innerHTML =
+            movie.toUpperCase().replace(" ", "<br>");
+    }
+
+});
+
+function saveMovie() {
+
+    const movie =
+        document.getElementById("movieTitle").textContent;
+
+    localStorage.setItem("selectedMovie", movie);
+}
+</script>
+
+</body>
+</html>

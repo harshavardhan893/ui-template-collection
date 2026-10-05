@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundWave | Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="cursor-glow"></div>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span>♫</span> SoundWave
+        </div>
+
+        <nav>
+            <a href="index.html">⌂ Home</a>
+            <a href="search.html" class="active">⌕ Search</a>
+            <a href="playlist.html">▣ Your Playlist</a>
+            <a href="player.html">▶ Player</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>YOUR MUSIC</p>
+            <button onclick="showToast('Liked Songs')">♥ Liked Songs</button>
+            <button onclick="showToast('Recently Played')">◷ Recently Played</button>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <h1 class="page-title">Search</h1>
+
+        <p class="page-subtitle">
+            Find your favorite songs and artists.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search songs or artists..."
+                onkeyup="searchSongs()"
+            >
+
+            <button onclick="searchSongs()">
+                Search
+            </button>
+
+        </div>
+
+        <div id="searchResults" class="song-list"></div>
+
+    </main>
+
+</div>
+
+<div class="player-bar">
+
+    <div class="now-playing">
+
+        <div class="mini-art">♫</div>
+
+        <div>
+            <strong id="currentTitle">Midnight Drive</strong>
+            <span id="currentArtist">Nova Lane</span>
+        </div>
+
+    </div>
+
+    <div class="player-controls">
+
+        <button onclick="previousSong()">⏮</button>
+
+        <button
+            class="main-play"
+            id="playButton"
+            onclick="togglePlay()"
+        >
+            ▶
+        </button>
+
+        <button onclick="nextSong()">⏭</button>
+
+    </div>
+
+    <div class="progress-area">
+
+        <span id="currentTime">0:00</span>
+
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+
+        <span>3:45</span>
+
+    </div>
+
+    <div class="volume-area">
+
+        <span>🔊</span>
+
+        <input
+            type="range"
+            min="0"
+            max="100"
+            value="70"
+            id="volume"
+        >
+
+    </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

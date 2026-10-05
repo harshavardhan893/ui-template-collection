@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuickBite | Orders</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
+    <div class="grid"></div>
+</div>
+
+<div class="cursor-glow"></div>
+
+
+<header class="header">
+
+    <div class="logo">
+        🍔 Quick<span style="color:#ff5a1f">Bite</span>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="restaurants.html">Restaurants</a>
+        <a href="cart.html">
+            Cart <span id="cartCount">0</span>
+        </a>
+        <a href="orders.html" class="active">Orders</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="theme-btn" id="themeBtn">🌙</button>
+        <button class="profile-btn" onclick="showLogin()">👤</button>
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="section" style="padding-top:50px">
+
+    <span class="small-title">HISTORY</span>
+
+    <h1 style="font-size:clamp(40px,6vw,65px);margin:10px 0 35px">
+        Your Orders 📦
+    </h1>
+
+
+    <div id="ordersContainer"></div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">🍔 QuickBite</div>
+
+    <p>Delicious food. Delivered with love.</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+
+function renderOrders() {
+
+    const order =
+        JSON.parse(
+            localStorage.getItem("quickbiteLastOrder")
+        );
+
+    const container =
+        document.getElementById(
+            "ordersContainer"
+        );
+
+
+    if (!order) {
+
+        container.innerHTML = `
+
+            <div style="
+                padding:60px 30px;
+                text-align:center;
+                border:1px solid var(--border);
+                border-radius:22px;
+                background:rgba(255,255,255,.05);
+            ">
+
+                <div style="font-size:75px">
+                    📦
+                </div>
+
+                <h2>No orders yet</h2>
+
+                <p style="
+                    color:var(--muted);
+                    margin:12px 0 25px;
+                ">
+                    Your completed orders will appear here.
+                </p>
+
+                <a
+                    href="restaurants.html"
+                    class="primary-btn"
+                >
+                    Order Food
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    const total =
+        order.items.reduce(
+            (sum,item) =>
+                sum + item.price * item.quantity,
+            0
+        );
+
+
+    container.innerHTML = `
+
+        <div style="
+            padding:30px;
+            border:1px solid var(--border);
+            border-radius:22px;
+            background:rgba(255,255,255,.05);
+        ">
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                gap:15px;
+                flex-wrap:wrap;
+                margin-bottom:25px;
+            ">
+
+                <div>
+
+                    <span style="
+                        color:var(--muted);
+                        font-size:12px;
+                    ">
+                        ORDER DATE
+                    </span>
+
+                    <h2 style="margin-top:5px">
+                        ${order.date}
+                    </h2>
+
+                </div>
+
+
+                <span style="
+                    padding:9px 14px;
+                    border-radius:999px;
+                    background:rgba(53,208,127,.12);
+                    color:#63e59b;
+                    height:max-content;
+                ">
+                    ● ${order.status}
+                </span>
+
+            </div>
+
+
+            ${order.items.map(item => `
+
+                <div style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:space-between;
+                    padding:15px 0;
+                    border-top:1px solid var(--border);
+                    gap:15px;
+                ">
+
+                    <div>
+                        <strong>${item.name}</strong>
+
+                        <p style="
+                            color:var(--muted);
+                            margin-top:4px;
+                        ">
+                            Quantity: ${item.quantity}
+                        </p>
+                    </div>
+
+                    <strong>
+                        ₹${item.price * item.quantity}
+                    </strong>
+
+                </div>
+
+            `).join("")}
+
+
+            <div style="
+                border-top:1px solid var(--border);
+                padding-top:20px;
+                margin-top:10px;
+                display:flex;
+                justify-content:space-between;
+                font-size:20px;
+            ">
+
+                <strong>Total</strong>
+
+                <strong>₹${total}</strong>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+renderOrders();
+
+</script>
+
+</body>
+</html>

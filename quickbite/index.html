@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuickBite | Food Delivery</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+        <div class="grid"></div>
+    </div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow"></div>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="logo">
+            <span class="logo-icon">🍔</span>
+            <span>Quick<span>Bite</span></span>
+        </div>
+
+        <nav class="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="restaurants.html">Restaurants</a>
+            <a href="cart.html">Cart <span id="cartCount">0</span></a>
+            <a href="orders.html">Orders</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="theme-btn" id="themeBtn" title="Change theme">
+                🌙
+            </button>
+
+            <button class="profile-btn" onclick="showLogin()">
+                👤
+            </button>
+        </div>
+
+    </header>
+
+
+    <!-- Hero Section -->
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    ⚡ Fast delivery • Fresh food • Best prices
+                </div>
+
+                <h1>
+                    Your favourite food,
+                    <span>delivered fast.</span>
+                </h1>
+
+                <p>
+                    Discover delicious food from your favourite restaurants
+                    and get it delivered right to your doorstep.
+                </p>
+
+                <!-- Search -->
+                <div class="search-box">
+
+                    <span class="search-icon">🔍</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search for food or restaurants..."
+                    >
+
+                    <button onclick="searchFood()">
+                        Search
+                    </button>
+
+                </div>
+
+                <div class="hero-buttons">
+
+                    <a href="restaurants.html" class="primary-btn">
+                        Explore Restaurants →
+                    </a>
+
+                    <button class="secondary-btn" onclick="showOffers()">
+                        🎁 View Offers
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Hero Food Visual -->
+            <div class="hero-visual">
+
+                <div class="food-circle">
+
+                    <div class="floating-food food-one">🍕</div>
+                    <div class="floating-food food-two">🍔</div>
+                    <div class="floating-food food-three">🍟</div>
+                    <div class="floating-food food-four">🥤</div>
+
+                    <div class="main-food">
+                        🍔
+                    </div>
+
+                </div>
+
+                <div class="delivery-card">
+
+                    <div class="delivery-icon">
+                        🛵
+                    </div>
+
+                    <div>
+                        <strong>Fast Delivery</strong>
+                        <small>Arriving in 25 min</small>
+                    </div>
+
+                    <span class="delivery-status">●</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Categories -->
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="small-title">EXPLORE</span>
+                    <h2>What are you craving?</h2>
+                </div>
+
+                <a href="restaurants.html">
+                    View all →
+                </a>
+
+            </div>
+
+
+            <div class="categories">
+
+                <button class="category-card" onclick="selectCategory('Pizza')">
+                    <span>🍕</span>
+                    <strong>Pizza</strong>
+                    <small>120+ places</small>
+                </button>
+
+                <button class="category-card" onclick="selectCategory('Burger')">
+                    <span>🍔</span>
+                    <strong>Burgers</strong>
+                    <small>90+ places</small>
+                </button>
+
+                <button class="category-card" onclick="selectCategory('Biryani')">
+                    <span>🍛</span>
+                    <strong>Biryani</strong>
+                    <small>75+ places</small>
+                </button>
+
+                <button class="category-card" onclick="selectCategory('Chinese')">
+                    <span>🥡</span>
+                    <strong>Chinese</strong>
+                    <small>65+ places</small>
+                </button>
+
+                <button class="category-card" onclick="selectCategory('Desserts')">
+                    <span>🍰</span>
+                    <strong>Desserts</strong>
+                    <small>50+ places</small>
+                </button>
+
+                <button class="category-card" onclick="selectCategory('Drinks')">
+                    <span>🥤</span>
+                    <strong>Drinks</strong>
+                    <small>40+ places</small>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Popular Restaurants -->
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="small-title">TOP PICKS</span>
+                    <h2>Popular restaurants</h2>
+                </div>
+
+                <a href="restaurants.html">
+                    See all →
+                </a>
+
+            </div>
+
+
+            <div class="restaurant-grid">
+
+
+                <!-- Restaurant 1 -->
+                <article class="restaurant-card">
+
+                    <div class="restaurant-image pizza-bg">
+
+                        <span class="restaurant-tag">
+                            20% OFF
+                        </span>
+
+                        <button
+                            class="favorite-btn"
+                            onclick="toggleFavorite(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <div class="food-image">
+                            🍕
+                        </div>
+
+                    </div>
+
+                    <div class="restaurant-info">
+
+                        <div class="restaurant-title">
+                            <h3>Pizza Palace</h3>
+                            <span class="rating">★ 4.8</span>
+                        </div>
+
+                        <p>Italian • Pizza • Fast Food</p>
+
+                        <div class="restaurant-meta">
+                            <span>🕒 25 min</span>
+                            <span>₹₹</span>
+                            <span>📍 2.1 km</span>
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart('Margherita Pizza', 249)"
+                        >
+                            + Add Pizza
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Restaurant 2 -->
+                <article class="restaurant-card">
+
+                    <div class="restaurant-image burger-bg">
+
+                        <span class="restaurant-tag">
+                            FREE DELIVERY
+                        </span>
+
+                        <button
+                            class="favorite-btn"
+                            onclick="toggleFavorite(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <div class="food-image">
+                            🍔
+                        </div>
+
+                    </div>
+
+                    <div class="restaurant-info">
+
+                        <div class="restaurant-title">
+                            <h3>Burger Hub</h3>
+                            <span class="rating">★ 4.7</span>
+                        </div>
+
+                        <p>Burgers • American • Fast Food</p>
+
+                        <div class="restaurant-meta">
+                            <span>🕒 20 min</span>
+                            <span>₹₹</span>
+                            <span>📍 1.5 km</span>
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart('Classic Burger', 199)"
+                        >
+                            + Add Burger
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Restaurant 3 -->
+                <article class="restaurant-card">
+
+                    <div class="restaurant-image biryani-bg">
+
+                        <span class="restaurant-tag">
+                            BESTSELLER
+                        </span>
+
+                        <button
+                            class="favorite-btn"
+                            onclick="toggleFavorite(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <div class="food-image">
+                            🍛
+                        </div>
+
+                    </div>
+
+                    <div class="restaurant-info">
+
+                        <div class="restaurant-title">
+                            <h3>Biryani House</h3>
+                            <span class="rating">★ 4.9</span>
+                        </div>
+
+                        <p>Indian • Biryani • Mughlai</p>
+
+                        <div class="restaurant-meta">
+                            <span>🕒 30 min</span>
+                            <span>₹₹</span>
+                            <span>📍 3.2 km</span>
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart('Chicken Biryani', 299)"
+                        >
+                            + Add Biryani
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Restaurant 4 -->
+                <article class="restaurant-card">
+
+                    <div class="restaurant-image dessert-bg">
+
+                        <span class="restaurant-tag">
+                            NEW
+                        </span>
+
+                        <button
+                            class="favorite-btn"
+                            onclick="toggleFavorite(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <div class="food-image">
+                            🍰
+                        </div>
+
+                    </div>
+
+                    <div class="restaurant-info">
+
+                        <div class="restaurant-title">
+                            <h3>Sweet Dreams</h3>
+                            <span class="rating">★ 4.6</span>
+                        </div>
+
+                        <p>Desserts • Cakes • Ice Cream</p>
+
+                        <div class="restaurant-meta">
+                            <span>🕒 15 min</span>
+                            <span>₹</span>
+                            <span>📍 1.8 km</span>
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart('Chocolate Cake', 179)"
+                        >
+                            + Add Cake
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- Special Offer -->
+        <section class="offer-section">
+
+            <div class="offer-content">
+
+                <span class="offer-label">
+                    🔥 LIMITED TIME OFFER
+                </span>
+
+                <h2>
+                    Get ₹150 OFF
+                    <br>
+                    on your first order
+                </h2>
+
+                <p>
+                    Use code <strong>QUICK150</strong> at checkout
+                </p>
+
+                <button onclick="copyCoupon()">
+                    Copy Coupon
+                </button>
+
+            </div>
+
+            <div class="offer-visual">
+                🍔
+                <span>+</span>
+                🍟
+                <span>+</span>
+                🥤
+            </div>
+
+        </section>
+
+
+        <!-- Features -->
+        <section class="features">
+
+            <div class="feature">
+                <span>⚡</span>
+                <div>
+                    <h3>Lightning Fast</h3>
+                    <p>Get your food delivered quickly.</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <span>🥗</span>
+                <div>
+                    <h3>Fresh & Quality</h3>
+                    <p>Fresh food from trusted restaurants.</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <span>💳</span>
+                <div>
+                    <h3>Secure Payment</h3>
+                    <p>Safe and simple checkout experience.</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <span>🎁</span>
+                <div>
+                    <h3>Best Offers</h3>
+                    <p>Save more with exclusive deals.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-logo">
+            🍔 QuickBite
+        </div>
+
+        <p>
+            Delicious food. Delivered with love.
+        </p>
+
+        <p class="copyright">
+            © 2026 QuickBite. Original UI Template.
+        </p>
+
+    </footer>
+
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+
+        <div class="modal-content">
+
+            <button class="close-modal" onclick="closeModal()">
+                ×
+            </button>
+
+            <div class="modal-icon">
+                👋
+            </div>
+
+            <h2>Welcome to QuickBite</h2>
+
+            <p>Sign in to continue your food journey.</p>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+            >
+
+            <button class="login-btn" onclick="loginUser()">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span id="toastIcon">✓</span>
+        <span id="toastMessage">Success!</span>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+
+<header class="navbar">
+    <div class="logo">STREAM<span>FLIX</span></div>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="mylist.html">My List</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button onclick="toggleTheme()">☀</button>
+        <button onclick="openProfile()">👤</button>
+    </div>
+</header>
+
+<section class="hero-netflix">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <p class="hero-label">STREAMFLIX ORIGINAL</p>
+
+        <h1>THE<br>LAST<br><span>HORIZON</span></h1>
+
+        <p class="hero-info">
+            ⭐ 9.1 &nbsp; • &nbsp; 2026 &nbsp; • &nbsp; 2h 28m &nbsp; • &nbsp; Sci-Fi
+        </p>
+
+        <p class="hero-description">
+            A group of explorers travel beyond the limits of known space
+            and discover a secret that could change humanity forever.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="watch-btn" onclick="watchMovie('The Last Horizon')">
+                ▶ Play
+            </button>
+
+            <button class="info-btn" onclick="showInfo('The Last Horizon')">
+                ⓘ More Info
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+
+    <div class="section-title">
+        <h2>🔥 Trending Now</h2>
+        <a href="movies.html">View All →</a>
+    </div>
+
+    <div class="content-row">
+
+        <div class="show-card" onclick="watchMovie('The Last Horizon')">
+            <div class="number">01</div>
+            <div class="show-poster poster-one">
+                <span>TOP 10</span>
+            </div>
+            <h3>The Last Horizon</h3>
+            <p>★ 9.1 • Sci-Fi</p>
+        </div>
+
+        <div class="show-card" onclick="watchMovie('Shadow City')">
+            <div class="number">02</div>
+            <div class="show-poster poster-two">
+                <span>TOP 10</span>
+            </div>
+            <h3>Shadow City</h3>
+            <p>★ 8.8 • Thriller</p>
+        </div>
+
+        <div class="show-card" onclick="watchMovie('Dark Ocean')">
+            <div class="number">03</div>
+            <div class="show-poster poster-three">
+                <span>TOP 10</span>
+            </div>
+            <h3>Dark Ocean</h3>
+            <p>★ 8.6 • Mystery</p>
+        </div>
+
+        <div class="show-card" onclick="watchMovie('Lost Kingdom')">
+            <div class="number">04</div>
+            <div class="show-poster poster-four">
+                <span>TOP 10</span>
+            </div>
+            <h3>Lost Kingdom</h3>
+            <p>★ 8.4 • Fantasy</p>
+        </div>
+
+        <div class="show-card" onclick="watchMovie('Final Mission')">
+            <div class="number">05</div>
+            <div class="show-poster poster-five">
+                <span>TOP 10</span>
+            </div>
+            <h3>Final Mission</h3>
+            <p>★ 8.2 • Action</p>
+        </div>
+
+    </div>
+
+    <div class="section-title">
+        <h2>🎬 Popular Movies</h2>
+    </div>
+
+    <div class="content-row">
+
+        <div class="movie-tile">
+            <div class="tile-poster tile-red"></div>
+            <h3>Red Signal</h3>
+            <button onclick="addToList('Red Signal')">＋ My List</button>
+        </div>
+
+        <div class="movie-tile">
+            <div class="tile-poster tile-blue"></div>
+            <h3>Beyond Earth</h3>
+            <button onclick="addToList('Beyond Earth')">＋ My List</button>
+        </div>
+
+        <div class="movie-tile">
+            <div class="tile-poster tile-purple"></div>
+            <h3>The Silent Voice</h3>
+            <button onclick="addToList('The Silent Voice')">＋ My List</button>
+        </div>
+
+        <div class="movie-tile">
+            <div class="tile-poster tile-orange"></div>
+            <h3>Lost Kingdom</h3>
+            <button onclick="addToList('Lost Kingdom')">＋ My List</button>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <div class="logo">STREAM<span>FLIX</span></div>
+    <p>© 2026 StreamFlix. Entertainment UI Template.</p>
+</footer>
+
+<div class="modal" id="profileModal">
+    <div class="modal-box">
+        <button class="close-btn" onclick="closeProfile()">×</button>
+        <div class="profile-icon">👤</div>
+        <h2>StreamFlix Profile</h2>
+        <p>Enjoy your favourite movies and shows.</p>
+        <button class="watch-btn" onclick="closeProfile()">Continue Watching</button>
+    </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

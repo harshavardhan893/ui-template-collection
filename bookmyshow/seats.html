@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Seats | CineBook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+
+<header class="header">
+    <div class="logo">🎬 Cine<span>Book</span></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="bookings.html">My Bookings</a>
+    </nav>
+</header>
+
+<section class="section">
+
+    <div class="section-heading">
+        <div>
+            <p class="small-title">BOOK YOUR EXPERIENCE</p>
+            <h2>Select Your Seats 💺</h2>
+        </div>
+    </div>
+
+    <div style="text-align:center;margin-bottom:40px;">
+        <h3 id="selectedMovieName">The Last Horizon</h3>
+        <p style="color:var(--muted);margin-top:8px;">
+            CineBook Multiplex • 7:30 PM
+        </p>
+    </div>
+
+    <div style="max-width:700px;margin:auto;">
+
+        <div style="
+            text-align:center;
+            padding:12px;
+            border-top:4px solid var(--primary);
+            margin-bottom:50px;
+            color:var(--muted);
+        ">
+            SCREEN
+        </div>
+
+        <div id="seatGrid" style="
+            display:grid;
+            grid-template-columns:repeat(8,1fr);
+            gap:10px;
+        "></div>
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:25px;
+            margin-top:35px;
+            color:var(--muted);
+            flex-wrap:wrap;
+        ">
+            <span>⬜ Available</span>
+            <span>🟩 Selected</span>
+            <span>🟥 Occupied</span>
+        </div>
+
+        <div style="
+            margin-top:40px;
+            padding:25px;
+            border:1px solid var(--border);
+            border-radius:15px;
+            background:var(--card);
+        ">
+
+            <h3>Booking Summary</h3>
+
+            <p style="margin-top:15px;color:var(--muted);">
+                Selected Seats:
+                <strong id="selectedSeats">None</strong>
+            </p>
+
+            <p style="margin-top:10px;color:var(--muted);">
+                Total:
+                <strong id="totalPrice">₹0</strong>
+            </p>
+
+            <button
+                class="primary-btn"
+                style="width:100%;margin-top:20px;"
+                onclick="confirmBooking()"
+            >
+                Confirm Booking 🎟️
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <div class="logo">🎬 Cine<span>Book</span></div>
+    <p>© 2026 CineBook</p>
+</footer>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+<script>
+
+let selectedSeats = [];
+
+const price = 220;
+
+const movie =
+    localStorage.getItem("selectedMovie") ||
+    "The Last Horizon";
+
+document.getElementById("selectedMovieName").textContent = movie;
+
+const seatGrid = document.getElementById("seatGrid");
+
+const occupiedSeats = [3, 7, 14, 19, 26, 31, 38, 43];
+
+for (let i = 1; i <= 48; i++) {
+
+    const seat = document.createElement("button");
+
+    seat.textContent = i;
+
+    seat.style.padding = "12px 5px";
+    seat.style.borderRadius = "7px";
+    seat.style.border = "1px solid var(--border)";
+    seat.style.background = occupiedSeats.includes(i)
+        ? "#7b2633"
+        : "rgba(255,255,255,.05)";
+    seat.style.color = "white";
+
+    if (occupiedSeats.includes(i)) {
+
+        seat.disabled = true;
+
+    } else {
+
+        seat.onclick = function() {
+
+            if (selectedSeats.includes(i)) {
+
+                selectedSeats =
+                    selectedSeats.filter(s => s !== i);
+
+                seat.style.background =
+                    "rgba(255,255,255,.05)";
+
+            } else {
+
+                selectedSeats.push(i);
+
+                seat.style.background = "#1fa463";
+            }
+
+            updateSummary();
+        };
+    }
+
+    seatGrid.appendChild(seat);
+}
+
+function updateSummary() {
+
+    document.getElementById("selectedSeats").textContent =
+        selectedSeats.length
+            ? selectedSeats.join(", ")
+            : "None";
+
+    document.getElementById("totalPrice").textContent =
+        "₹" + (selectedSeats.length * price);
+}
+
+function confirmBooking() {
+
+    if (selectedSeats.length === 0) {
+
+        showToast("Please select at least one seat.");
+
+        return;
+    }
+
+    const booking = {
+
+        movie: movie,
+
+        seats: selectedSeats,
+
+        price: selectedSeats.length * price,
+
+        theatre: "CineBook Multiplex",
+
+        time: "7:30 PM",
+
+        date: new Date().toLocaleDateString()
+    };
+
+    localStorage.setItem(
+        "lastBooking",
+        JSON.stringify(booking)
+    );
+
+    window.location.href = "bookings.html";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundWave | Music</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <span>♫</span> SoundWave
+        </div>
+
+        <nav>
+            <a href="index.html" class="active">⌂ Home</a>
+            <a href="search.html">⌕ Search</a>
+            <a href="playlist.html">▣ Your Playlist</a>
+            <a href="player.html">▶ Player</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>YOUR MUSIC</p>
+            <button onclick="showToast('Liked Songs opened ❤️')">♥ Liked Songs</button>
+            <button onclick="showToast('Recently Played opened')">◷ Recently Played</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="small-text">Good evening</p>
+                <h1>Welcome back 👋</h1>
+            </div>
+
+            <div class="top-actions">
+                <button onclick="toggleTheme()" class="icon-btn">☼</button>
+                <button onclick="showToast('Profile coming soon!')" class="profile">HV</button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div>
+                <p class="hero-label">YOUR DAILY MIX</p>
+                <h2>Music for every<br><span>moment.</span></h2>
+                <p>Discover fresh sounds, relaxing beats and energetic tracks.</p>
+                <a href="search.html" class="primary-btn">Explore Music</a>
+            </div>
+
+            <div class="hero-art">
+                <div class="vinyl">♫</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <h2>Recently Played</h2>
+                <a href="search.html">See all</a>
+            </div>
+
+            <div class="music-grid">
+
+                <div class="music-card" onclick="playSong('Midnight Drive','Nova Lane')">
+                    <div class="album-art art-one">♫</div>
+                    <h3>Midnight Drive</h3>
+                    <p>Nova Lane</p>
+                    <button class="play-small">▶</button>
+                </div>
+
+                <div class="music-card" onclick="playSong('Neon Skies','The Echoes')">
+                    <div class="album-art art-two">♪</div>
+                    <h3>Neon Skies</h3>
+                    <p>The Echoes</p>
+                    <button class="play-small">▶</button>
+                </div>
+
+                <div class="music-card" onclick="playSong('Ocean Lights','Luna Ray')">
+                    <div class="album-art art-three">♫</div>
+                    <h3>Ocean Lights</h3>
+                    <p>Luna Ray</p>
+                    <button class="play-small">▶</button>
+                </div>
+
+                <div class="music-card" onclick="playSong('City Pulse','Aria Stone')">
+                    <div class="album-art art-four">♪</div>
+                    <h3>City Pulse</h3>
+                    <p>Aria Stone</p>
+                    <button class="play-small">▶</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <h2>Made For You</h2>
+                <a href="playlist.html">View playlist</a>
+            </div>
+
+            <div class="wide-grid">
+
+                <div class="playlist-card">
+                    <div class="playlist-cover cover-one">♫</div>
+                    <div>
+                        <span>PLAYLIST</span>
+                        <h3>Chill Evening</h3>
+                        <p>Relaxing sounds for your evening.</p>
+                        <button onclick="playSong('Chill Evening','SoundWave Mix')">▶ Play</button>
+                    </div>
+                </div>
+
+                <div class="playlist-card">
+                    <div class="playlist-cover cover-two">♪</div>
+                    <div>
+                        <span>PLAYLIST</span>
+                        <h3>Energy Boost</h3>
+                        <p>Powerful tracks to keep you moving.</p>
+                        <button onclick="playSong('Energy Boost','SoundWave Mix')">▶ Play</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<div class="player-bar">
+
+    <div class="now-playing">
+        <div class="mini-art">♫</div>
+        <div>
+            <strong id="currentTitle">Midnight Drive</strong>
+            <span id="currentArtist">Nova Lane</span>
+        </div>
+    </div>
+
+    <div class="player-controls">
+        <button onclick="previousSong()">⏮</button>
+        <button class="main-play" id="playButton" onclick="togglePlay()">▶</button>
+        <button onclick="nextSong()">⏭</button>
+    </div>
+
+    <div class="progress-area">
+        <span id="currentTime">0:00</span>
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <span>3:45</span>
+    </div>
+
+    <div class="volume-area">
+        <span>🔊</span>
+        <input type="range" min="0" max="100" value="70" id="volume">
+    </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

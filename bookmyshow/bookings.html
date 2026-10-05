@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings | CineBook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+
+<header class="header">
+    <div class="logo">🎬 Cine<span>Book</span></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="bookings.html" class="active">My Bookings</a>
+    </nav>
+</header>
+
+<section class="section">
+
+    <div class="section-heading">
+        <div>
+            <p class="small-title">YOUR TICKETS</p>
+            <h2>My Bookings 🎟️</h2>
+        </div>
+    </div>
+
+    <div id="bookingContainer"></div>
+
+</section>
+
+<footer>
+    <div class="logo">🎬 Cine<span>Book</span></div>
+    <p>© 2026 CineBook</p>
+</footer>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+<script>
+
+const container =
+    document.getElementById("bookingContainer");
+
+const booking =
+    JSON.parse(localStorage.getItem("lastBooking"));
+
+if (!booking) {
+
+    container.innerHTML = `
+        <div style="
+            text-align:center;
+            padding:80px 20px;
+            border:1px solid var(--border);
+            border-radius:20px;
+            background:var(--card);
+        ">
+            <div style="font-size:60px;">🎬</div>
+
+            <h2 style="margin:20px 0 10px;">
+                No Bookings Yet
+            </h2>
+
+            <p style="color:var(--muted);margin-bottom:25px;">
+                Your movie tickets will appear here.
+            </p>
+
+            <a href="movies.html" class="primary-btn">
+                Explore Movies
+            </a>
+        </div>
+    `;
+
+} else {
+
+    container.innerHTML = `
+
+        <div style="
+            max-width:800px;
+            margin:auto;
+            padding:30px;
+            border:1px solid var(--border);
+            border-radius:20px;
+            background:var(--card);
+        ">
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                gap:20px;
+                flex-wrap:wrap;
+            ">
+
+                <div>
+
+                    <p class="small-title">
+                        CONFIRMED
+                    </p>
+
+                    <h2>
+                        ${booking.movie}
+                    </h2>
+
+                </div>
+
+                <div style="
+                    padding:10px 15px;
+                    background:#164d35;
+                    color:#70e0a6;
+                    border-radius:10px;
+                ">
+                    ✓ Booking Confirmed
+                </div>
+
+            </div>
+
+            <hr style="
+                border:0;
+                border-top:1px solid var(--border);
+                margin:25px 0;
+            ">
+
+            <div style="
+                display:grid;
+                grid-template-columns:repeat(2,1fr);
+                gap:20px;
+            ">
+
+                <div>
+                    <p style="color:var(--muted);">
+                        Theatre
+                    </p>
+
+                    <strong>
+                        ${booking.theatre}
+                    </strong>
+                </div>
+
+                <div>
+                    <p style="color:var(--muted);">
+                        Date
+                    </p>
+
+                    <strong>
+                        ${booking.date}
+                    </strong>
+                </div>
+
+                <div>
+                    <p style="color:var(--muted);">
+                        Showtime
+                    </p>
+
+                    <strong>
+                        ${booking.time}
+                    </strong>
+                </div>
+
+                <div>
+                    <p style="color:var(--muted);">
+                        Seats
+                    </p>
+
+                    <strong>
+                        ${booking.seats.join(", ")}
+                    </strong>
+                </div>
+
+            </div>
+
+            <div style="
+                margin-top:30px;
+                padding-top:20px;
+                border-top:1px solid var(--border);
+                display:flex;
+                justify-content:space-between;
+            ">
+
+                <strong>
+                    Total Paid
+                </strong>
+
+                <strong style="color:var(--primary);font-size:22px;">
+                    ₹${booking.price}
+                </strong>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+</script>
+
+</body>
+</html>
